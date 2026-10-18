@@ -140,6 +140,9 @@ function renderApps(){
 $('exportBtn').addEventListener('click',()=>{const apps=readApps();if(!apps.length){showToast('No applications to export.');return}const columns=['Name','Phone','Email','Category','Message','Date','Status'];const rows=apps.map(a=>[a.name,a.phone,a.email,a.category,a.message,a.date,a.status||'Pending']);const csv=[columns,...rows].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='aryan-digital-applications.csv';document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);showToast('CSV export started')});
 $('clearBtn').addEventListener('click',()=>{if(confirm('Permanently clear all applications saved in this browser?')){saveApps([]);renderApps();showToast('Applications cleared')}});
 })();
+</script> 
+  <script>
+console.log("ARYAN DIGITAL JAAMU website ready");
 </script>
 </body>
 </html>
